@@ -1,0 +1,12 @@
+{
+  "id": "finalcutpro",
+  "name": "FinalCutPro",
+  "version": "1.0.0",
+  "sdkVersion": "1.37",
+  "entryAssembly": "LoupixDeck.Plugin.FinalCutPro.dll",
+  "platform": "All",
+  "author": "",
+  "description": "",
+  "projectUrl": "",
+  "iconFile": ""
+}
