@@ -36,5 +36,15 @@
 		<key>characterString</key>
 		<string>?</string>
 	</dict>
+	<key>JumpToPreviousFrame</key>
+	<dict>
+		<key>characterString</key>
+		<string>NSLeftArrowFunctionKey</string>
+	</dict>
+	<key>JumpToNextFrame</key>
+	<dict>
+		<key>characterString</key>
+		<string>NSRightArrowFunctionKey</string>
+	</dict>
 </dict>
 </plist>
