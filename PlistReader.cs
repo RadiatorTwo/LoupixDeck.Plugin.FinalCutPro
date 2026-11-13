@@ -25,7 +25,8 @@ internal static class PlistReader
               ?? throw new InvalidDataException($"plutil could not read '{path}'.")
             : await File.ReadAllTextAsync(path, cancellationToken);
 
-        XElement? root = XDocument.Parse(xml).Root?.Elements().FirstOrDefault();
+        // Whitespace must survive: the space bar is stored as <string> </string>.
+        XElement? root = XDocument.Parse(xml, LoadOptions.PreserveWhitespace).Root?.Elements().FirstOrDefault();
         return root == null ? null : Parse(root);
     }
 
