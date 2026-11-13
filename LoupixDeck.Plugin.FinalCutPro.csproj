@@ -20,6 +20,7 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <Content Include="strings.*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="icon.png" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,6 @@
   "platform": "macOS",
   "author": "RadiatorTwo",
   "description": "Runs Final Cut Pro commands through the shortcuts of the active command set.",
-  "projectUrl": "",
-  "iconFile": ""
+  "projectUrl": "https://github.com/RadiatorTwo/LoupixDeck.Plugin.FinalCutPro",
+  "iconFile": "icon.png"
 }
