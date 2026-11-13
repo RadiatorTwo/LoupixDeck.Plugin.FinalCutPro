@@ -1,12 +1,12 @@
 {
   "id": "finalcutpro",
-  "name": "FinalCutPro",
+  "name": "Final Cut Pro",
   "version": "1.0.0",
   "sdkVersion": "1.37",
   "entryAssembly": "LoupixDeck.Plugin.FinalCutPro.dll",
-  "platform": "All",
-  "author": "",
-  "description": "",
+  "platform": "macOS",
+  "author": "RadiatorTwo",
+  "description": "Runs Final Cut Pro commands through the shortcuts of the active command set.",
   "projectUrl": "",
   "iconFile": ""
 }

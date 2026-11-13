@@ -19,6 +19,7 @@
     <PackageReference Include="LoupixDeck.PluginSdk" Version="1.37.0">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+    <Content Include="strings.*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
