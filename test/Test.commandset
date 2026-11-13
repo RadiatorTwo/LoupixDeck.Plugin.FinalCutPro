@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Test command set for trying the plugin without Final Cut Pro. Harmless keys only (no Command
+     modifier), so pressing a key types into an editor such as Notepad. Use it with
+     LOUPIX_FCP_COMMANDSET=<path to this file>. -->
+<plist version="1.0">
+<dict>
+	<key>SelectToolBlade</key>
+	<dict>
+		<key>characterString</key>
+		<string>b</string>
+	</dict>
+	<key>SelectToolTrim</key>
+	<array>
+		<dict>
+			<key>characterString</key>
+			<string>t</string>
+			<key>modifiers</key>
+			<string>shift</string>
+		</dict>
+	</array>
+	<key>PlayPause</key>
+	<dict>
+		<key>characterString</key>
+		<string> </string>
+	</dict>
+	<key>JumpBackward10Frames</key>
+	<dict>
+		<key>characterString</key>
+		<string>NSLeftArrowFunctionKey</string>
+		<key>modifierMask</key>
+		<integer>131072</integer>
+	</dict>
+	<key>SelectToolZoom</key>
+	<dict>
+		<key>characterString</key>
+		<string>?</string>
+	</dict>
+</dict>
+</plist>

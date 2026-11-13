@@ -15,8 +15,15 @@ internal static class PlistReader
     /// <exception cref="InvalidDataException">The file is not a readable plist.</exception>
     public static async Task<object?> ReadAsync(string path, CancellationToken cancellationToken = default)
     {
-        string xml = await ProcessRunner.RunAsync("/usr/bin/plutil", ["-convert", "xml1", "-o", "-", path],
-            cancellationToken) ?? throw new InvalidDataException($"plutil could not read '{path}'.");
+        // An XML plist is read as is; only a binary one needs plutil, which exists on macOS only.
+        byte[] head = new byte[6];
+        await using (FileStream file = File.OpenRead(path))
+            await file.ReadAtLeastAsync(head, head.Length, throwOnEndOfStream: false, cancellationToken);
+
+        string xml = head.AsSpan().SequenceEqual("bplist"u8)
+            ? await ProcessRunner.RunAsync("/usr/bin/plutil", ["-convert", "xml1", "-o", "-", path], cancellationToken)
+              ?? throw new InvalidDataException($"plutil could not read '{path}'.")
+            : await File.ReadAllTextAsync(path, cancellationToken);
 
         XElement? root = XDocument.Parse(xml).Root?.Elements().FirstOrDefault();
         return root == null ? null : Parse(root);

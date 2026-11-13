@@ -18,6 +18,9 @@ internal sealed class CommandSetService
     private const string ActiveSetKey = "Active Command Set";
     private const string BundleId = "com.apple.FinalCut";
     private const string FallbackAppPath = "/Applications/Final Cut Pro.app";
+
+    /// <summary>Environment variable naming a <c>.commandset</c> file to use instead of the active one.</summary>
+    public const string OverrideVariable = "LOUPIX_FCP_COMMANDSET";
     private static readonly TimeSpan ActivePathLifetime = TimeSpan.FromSeconds(5);
 
     private readonly SemaphoreSlim _lock = new(1, 1);
@@ -85,6 +88,13 @@ internal sealed class CommandSetService
 
     private static async Task<string?> ResolveActivePathAsync(CancellationToken cancellationToken)
     {
+        // Forces a command set, e.g. a test set on a machine without Final Cut Pro.
+        string? forced = Environment.GetEnvironmentVariable(OverrideVariable);
+        if (!string.IsNullOrWhiteSpace(forced))
+            return File.Exists(forced) ? forced : null;
+
+        if (!OperatingSystem.IsMacOS()) return null;
+
         string? preference = (await ProcessRunner.RunAsync("/usr/bin/defaults",
             ["read", PreferencesDomain, ActiveSetKey], cancellationToken))?.Trim();
 
